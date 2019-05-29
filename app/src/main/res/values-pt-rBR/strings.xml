@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Eventos</string>
+    <string name="new_event">Novo evento</string>
+    <string name="add_event">Adicionar evento</string>
+</resources>
