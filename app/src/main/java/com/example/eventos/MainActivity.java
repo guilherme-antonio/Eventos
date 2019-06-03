@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<Event> adaptador;
@@ -45,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
                 Event newEvent = eventDao.getEventById(eventId);
 
                 adaptador.add(newEvent);
+
+                adaptador.sort(new Comparator<Event>() {
+                    @Override
+                    public int compare(Event lhs, Event rhs) {
+                        return rhs.getDate().compareTo(lhs.getDate());
+                    }
+                });
             }
         }
     }

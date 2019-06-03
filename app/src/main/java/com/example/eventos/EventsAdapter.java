@@ -42,22 +42,28 @@ public class EventsAdapter extends ArrayAdapter {
         textName.setText(eventName);
         textDate.setText(dateFormat.format(eventDate));
 
-        Date today = new Date();
-        int dateDiff = eventDate.compareTo(today);
-        int color;
+        try {
+            Date today = dateFormat.parse(dateFormat.format(new Date()));
+            Date formatedEventDate = dateFormat.parse(dateFormat.format(eventDate));
+            int dateDiff = formatedEventDate.compareTo(today);
+            int color;
 
-        if (dateDiff < 0){
-            color = Color.RED;
-        }
-        else if (dateDiff > 0){
-            color = Color.GREEN;
-        }
-        else{
-            color = Color.YELLOW;
+            if (dateDiff < 0){
+                color =  Color.RED;
+            }
+            else if (dateDiff > 0){
+                color = Color.GREEN;
+            }
+            else{
+                color = Color.YELLOW;
+            }
+
+            textName.setBackgroundColor(color);
+            textDate.setBackgroundColor(color);
+        } catch(Exception e){
+            e.printStackTrace();
         }
 
-        textName.setTextColor(color);
-        textDate.setTextColor(color);
 
         return convertView;
     }
